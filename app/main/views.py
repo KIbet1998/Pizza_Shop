@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,abort, flash
 from . import main
 from flask_login import login_required, current_user
 from ..models import Pizza, User
-from .forms import PizzaForm, 
+from .forms import PizzaForm
 from flask.views import View,MethodView
 from .. import db 
 
