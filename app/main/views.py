@@ -1,8 +1,9 @@
 from flask import render_template,request,redirect,url_for,abort, flash
+from flask.globals import session
 from . import main
 from flask_login import login_required, current_user
 from ..models import Pizza, User
-from .forms import PizzaForm
+from .forms import AddToCartForm, LoginForm, PizzaForm
 from flask.views import View,MethodView
 from .. import db 
 
@@ -41,5 +42,23 @@ def new_pizza():
         
         return redirect(url_for('.index'))
     return render_template('pizza.html',pizzaform=PizzaForm)
+
+
+@main.route("/addtocart", methods=["GET", "POST"])
+def addtocart():
+    form = AddToCartForm()
+    if request.method == "POST":
+        if form.validate() == False:
+                AddToCartForm.info(session["email"] + " : Placed an order. Details - " + str(form.data))
+        else:
+                AddToCartForm.info("Guest : Placed an order. Details - " + str(form.data))
+                return render_template("order.html", status="Order placed")
+    elif request.method == "GET":
+        if "email" in session:
+            AddToCartForm.info(session["email"] + " : Accessed /order")
+        else:
+            AddToCartForm.info("Guest : Accessed /order")
+        return render_template("order.html", form=form)
+
 
     

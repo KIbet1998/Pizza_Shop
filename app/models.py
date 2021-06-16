@@ -54,13 +54,24 @@ class Pizza(db.Model):
         pizzas = Pizza.query.filter_by(category_id = id).all()
         return pizzas
 
-# class Role(db.Model):
-#     __tablename__ = 'roles'
+# class AddToCart(db.Model):
+    
+#     __tablename__ = 'cart'
+#     pizza = db.relationship('Pizza', backref='user', lazy='dynamic')
+#     now_or_later = db.Column((db.String(255), index = True))
+    
+    
+    
+#     @property
+#     def password(self):
+#         raise AttributeError('You cannot read the password attribute')
 
-#     id = db.Column(db.Integer, primary_key = True)
-#     name = db.Column(db.String(255))
-#     users = db.relationship('User', backref = 'role', lazy = "dynamic")
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     @password.setter
+#     def password(self, password):
+#         self.pass_secure = generate_password_hash(password)
+
+#     def verify_password(self,password):
+#         return check_password_hash(self.pass_secure,password)
 
 #     def __repr__(self):
-#         return f'User {self.name}'
+#         return f'{self.username}'
