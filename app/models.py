@@ -43,6 +43,8 @@ class Pizza(db.Model):
     time = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     topping = db.Column(db.String(255), index = True)
+    category = db.Column(db.String(255), index = True)
+    
     def save_pizza(self):
         db.session.add(self)
         db.session.commit()

@@ -13,15 +13,15 @@ def index():
     Root page functions that return the home page and its data
     '''
     pizza = Pizza.query.filter_by().first()
-    title = 'Welcome to Marinara Pizza House'
+    title = 'Welcome to Natty Nats Pizza House'
     extralarge = Pizza.query.filter_by(category="extralarge")
     largepizza = Pizza.query.filter_by(category = "largepizza")
     mediumpizza = Pizza.query.filter_by(category = "mediumpizza")
     smallpizza = Pizza.query.filter_by(category = "smallpizza")
 
-    return render_template('home.html', title = title, pizza = pizza, extralarge=extralarge, largepizza= largepizza, mediumpizza = mediumpizza, smallpizza = smallpizza)
+    return render_template('index.html', title = title, pizza = pizza, extralarge=extralarge, largepizza= largepizza, mediumpizza = mediumpizza, smallpizza = smallpizza)
     
-@main.route('/pitches/new/', methods = ['GET','POST'])
+@main.route('/pizza/new/', methods = ['GET','POST'])
 @login_required
 def new_pizza():
     form = PizzaForm()
