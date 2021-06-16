@@ -41,3 +41,5 @@ def new_pizza():
         
         return redirect(url_for('.index'))
     return render_template('pizza.html',pizzaform=PizzaForm)
+
+    
