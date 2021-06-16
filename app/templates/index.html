@@ -1,20 +1,112 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 {% block content %}
-    <div class="container">
-        <h1 style="font-size:50px; text-align:center">{{title}}</h1>
-        <ul class="nav nav-pills nav-justified nav-fill" role ="tablist">
-            <li class="nav-item">
-                <a id="cats" class="nav-link" data-toggle="tab" href="/">Types of Pizzas</a>
-            </li>
-            <li class="nav-item">
-                <a id="cats" class="nav-link" data-toggle="tab" href="/">Odering of Pizzas</a>
-            </li>
-            <li class="nav-item">
-                <a id="cats" class="nav-link" data-toggle="tab" href="/">Contacts</a>
-            </li>
 
-        </ul>
-        
+<style>
+    #background{
+      background-image: url('../static/pranjall-kumar-sejqj6Eaqe8-unsplash.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+    <div class="container" id="background">
+        <h1 style="font-size:50px; text-align:center; color: white;" >{{title}}</h1>
+        <div class="back">
+            <div class="col">
+            </div><br>
+            <div class="banner">
+                <h1>The best food is eaten with your hands!</h1>
+            </div><br>
+            <div class="prices">
+                <p class="about">Chebichii's Cheeky Cheese pizza establishment, is a new player in the food industry. Pushed by the need of more family oriented dining experiences, combined with the option of home delivery, the restaurant is positioned to take advantage of the market need and serve the families in Eldoret area. Our mission is to create and nice, happy, comfortable and friendly environment in which people can work and eat happily.</p>
+                <h2>Order Up</h2>
+            </div>
+            <div class="form-group" id="make-pizza">
+                <div class="order">
+                    <div class="row">
+                        <div class="col-md-4 col-xs-8">
+                            <div class="card">
+                                <img src="../static/images/pizza1.jpeg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Select Toppings</h5>
+                                    <p class="card-text">Choose your prefered Topping</p>
+                                    <select required class="form-control" id="toppings">
+                                        <option>
+                                            <option value="pepperoni">Pepperoni (100)</option>
+                                            <option value="pineapples">Pineapples and Ham (300)</option>
+                                            <option value="mushrooms">Mushrooms (350)</option>
+                                            <option value="bacon">Bacon (250)</option>
+                                            <option value="cheese">Mozzarella, Feta, Parmesan (600)</option>
+                                            <option value="brocolli">Brocolli (150)</option>
+                                            <option value="beef">BBQ (600)</option> 
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-8">
+                            <div class="card">
+                              <img src="../static/images/pizza2.jpeg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                  <h5 class="card-title">Select your Size</h5>
+                                  <p class="card-text">Choose your prefered Size</p>
+                                  <select required class="form-control" id="size">
+                                      <option>
+                                          <option value="small">Small (300)</option>
+                                          <option value="medium">Medium (600)</option>
+                                          <option value="large">Large (800)</option>
+                                      </option>
+                                  </select>
+                              </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-8">
+                          <div class="card">
+                              <img src="../static/images/pizza3.jpeg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Select your Crust</h5>
+                                <p class="card-text">Choose your prefered Crust</p>
+                                <select required class="form-control" id="crust">
+                                    <option>
+                                        <option value="crispy">Crispy (100)</option>
+                                        <option value="stuffed">Stuffed (100)</option>
+                                        <option value="baked">Baked (200)</option>
+                                        <option value="gluten-free">Gluten Free (150</option>
+                                    </option>
+                                </select>
+                              </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <button type="submit" class="order-button btn btn-success" id="submit-pizza">Add to cart</button>
+                    <input type="number" id="amount" placeholder="Number of pizza" required min="1">
+                </form>
+                <div class="col-xs-4" id="price-content">
+                    <h1 class="page-header">Cart</h1>
+                    <h2>The Price will be Ksh <span id="pizza-cost"></span></h2><br>
+                    <div id="customer-delivery" class="deliver" >
+                        <h5>Are you in for our Nairobi and its environs<br>
+                            delivery fee of Ksh.150? <br>
+                            If so, please input your location below. </h5>
+                        <form id="address-form">
+                            <div class="col-xs-6">
+                                <label for="first-name"></label>
+                                <input id="location" type="text" size="40" placeholder="Input your location here..." />
+                                <button class="btn btn-success complete" type="submit">Enter</button>
+                                <h3><span id="delivery-option"></span></h3>
+                            </div>
+                        </form>
+                    </div><br>
+                    <!-- Checkout section -->
+                    <button type="btn" class="btn btn-success" id="checkout-btn">CheckOut</button><br><br>
+                    <div id="final-order-details" class="col-xs-12">
+                        <ul id="output-details"><strong>Here's Your order: </strong></ul>
+                        <h5 id="pizza-details">Thank you for choosing Ajays pizza.Welcome again!</h5>
+                    </div>
+                </div>
+                    
+                </div>
+            </div>
     </div>
 {% endblock %}
