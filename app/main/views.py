@@ -27,15 +27,17 @@ def new_pizza():
     form = PizzaForm()
 
     if form.validate_on_submit():
+
         description = form.description.data
         title = form.title.data
-        owner_id = current_user
+        user = current_user
         category = form.category.data
-        print(current_user._get_current_object().id)
-        new_pizza = Pizza(owner_id =current_user._get_current_object().id, title = title,description=description,category=category)
+        print(user.get_current_user().id)
+
+        new_pizza = Pizza(user=current_user, title = title,description=description,category=category)
         db.session.add(new_pizza)
         db.session.commit()
         
         
-        return redirect(url_for('main.index'))
-    return render_template('pizzas.html',form=form)
+        return redirect(url_for('.index'))
+    return render_template('pizza.html',pizzaform=PizzaForm)

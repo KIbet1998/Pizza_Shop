@@ -1,6 +1,19 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
 {% block content %}
     <div class="container">
-        <h1>{{title}}</h1>
-        <p>{{pizza}}</p>
+        <h1 style="font-size:50px; text-align:center">{{title}}</h1>
+        <ul class="nav nav-pills nav-justified nav-fill" role ="tablist">
+            <li class="nav-item">
+                <a id="cats" class="nav-link" data-toggle="tab" href="/">Types of Pizzas</a>
+            </li>
+            <li class="nav-item">
+                <a id="cats" class="nav-link" data-toggle="tab" href="/">Odering of Pizzas</a>
+            </li>
+            <li class="nav-item">
+                <a id="cats" class="nav-link" data-toggle="tab" href="/">Contacts</a>
+            </li>
+
+        </ul>
     </div>
 {% endblock %}
